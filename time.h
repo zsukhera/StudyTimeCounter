@@ -272,6 +272,29 @@ public:
 		}
 	}
 	
+	//function that returns the average study time in a given range of dates
+	float avgStudyTimeInRange(int d1, int m1, int y1, int d2, int m2, int y2)
+	{
+		int start = dateToDays(d1, m1, y1);
+		int end = dateToDays(d2, m2, y2);
+		if (start > end)
+			std::swap(start, end); // ensure start <= end
+		int totalStudyTime = 0;
+		int daysStudied = 0;
+		int totalDays = end - start + 1;
+		if (totalDays <= 0) return 0.0f; // no valid range
+		for (int i = 0; i < count; ++i)
+		{
+			int current = dateToDays(times[i].day, times[i].month, times[i].year);
+			if (current >= start && current <= end)
+			{
+				totalStudyTime += times[i].studyTime;
+				daysStudied++;
+			}
+		}
+		if (daysStudied == 0) return 0.0f;
+		return static_cast<float>(totalStudyTime) / daysStudied;
+	}
 
 	int daysMissedInRange(int d1, int m1, int y1, int d2, int m2, int y2)
 	{
