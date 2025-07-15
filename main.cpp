@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cstdlib>
-#include "time.h" // assuming your class is in time.h
+#include "time.h" 
 using namespace std;
 
 int main()

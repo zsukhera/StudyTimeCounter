@@ -10,7 +10,7 @@ struct timeD
 	int day;
 	int month;
 	int year;
-	int studyTime; // in minutes or whatever unit
+	int studyTime; // in minutes 
 };
 
 
@@ -51,7 +51,7 @@ class studytime
 				>> times[i].studyTime;
 			++i;
 		}
-		// 2) fix count so it’s the number of entries we actually parsed
+		
 		count = i;
 		fin.close();
 	}
@@ -132,9 +132,9 @@ public:
 		for (int i = 0; i < count; ++i)
 			total += times[i].studyTime;
 
-		// 3) force float division on the denominator
 		return total / static_cast<float>(count);
 	}
+
 	//average study time considering the number of days missed 
 	float avgstudytime(bool missed)
 	{
